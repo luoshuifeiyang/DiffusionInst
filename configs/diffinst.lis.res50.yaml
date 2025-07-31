@@ -22,7 +22,7 @@ SOLVER:
   STEPS: (6000, 8000)      # 例如，总迭代次数的 70% 和 90%
   MAX_ITER: 900000           # <<-- 建议修改
   # 每 2000 次迭代保存一次 checkpoint
-  CHECKPOINT_PERIOD: 2000
+  CHECKPOINT_PERIOD: 5000
 INPUT:
   CROP:
     ENABLED: True
