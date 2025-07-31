@@ -34,7 +34,7 @@ from diffusioninst.util.model_ema import add_model_ema_configs, may_build_model_
     apply_model_ema_and_restore, EMADetectionCheckpointer
 
 
-class Trainer(DefaultTrainer):
+class Trainer(DefaultTrainer): #11111111111 todo
     """ Extension of the Trainer class adapted to DiffusionInst. """
 
     def __init__(self, cfg):
