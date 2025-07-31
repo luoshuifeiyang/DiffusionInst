@@ -32,7 +32,23 @@ from detectron2.modeling import build_model
 from diffusioninst import DiffusionInstDatasetMapper, add_diffusioninst_config, DiffusionInstWithTTA
 from diffusioninst.util.model_ema import add_model_ema_configs, may_build_model_ema, may_get_ema_checkpointer, EMAHook, \
     apply_model_ema_and_restore, EMADetectionCheckpointer
-print("11111")
+
+from detectron2.data.datasets import register_coco_instances
+
+# 注册训练集
+register_coco_instances("lis_train", {},
+                        "/media/ubuntu/DATA4T/dataset/LIS_paixu/RGB-dark/annotations/lis_coco_JPG_train+1.json",
+                        "/media/ubuntu/DATA4T/dataset/LIS_paixu/RGB-dark/images/")
+
+# 注册验证集
+register_coco_instances("lis_val", {},
+                        "/media/ubuntu/DATA4T/dataset/LIS_paixu/RGB-dark/annotations/lis_coco_JPG_test+1.json",
+                        "/media/ubuntu/DATA4T/dataset/LIS_paixu/RGB-dark/images/")
+
+
+
+
+
 class Trainer(DefaultTrainer): #1111111111
     """ Extension of the Trainer class adapted to DiffusionInst. """
 

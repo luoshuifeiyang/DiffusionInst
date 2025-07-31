@@ -1,0 +1,33 @@
+_BASE_: "Base-DiffusionInst.yaml"
+MODEL:
+  WEIGHTS: "detectron2://ImageNetPretrained/torchvision/R-50.pkl" # 建议从ImageNet预训练开始
+  RESNETS:
+    DEPTH: 50
+    STRIDE_IN_1X1: False
+  # 将类别数改为 8
+  DiffusionInst:
+    NUM_PROPOSALS: 300
+    NUM_CLASSES: 8 # <<-- 修改这里
+  # 对于较早版本的detectron2，可能也需要修改ROI_HEADS
+  ROI_HEADS:
+    NUM_CLASSES: 8 # <<-- 有些情况下也需要修改这里
+
+DATASETS:
+  # 将数据集名称改为您注册的名称
+  TRAIN: ("lis_train",) # <<-- 修改这里
+  TEST:  ("lis_val",)   # <<-- 修改这里
+
+SOLVER:
+  # 根据您的数据集大小和硬件情况，调整迭代次数
+  STEPS: (6000, 8000)      # 例如，总迭代次数的 70% 和 90%
+  MAX_ITER: 900000           # <<-- 建议修改
+  # 每 2000 次迭代保存一次 checkpoint
+  CHECKPOINT_PERIOD: 2000
+INPUT:
+  CROP:
+    ENABLED: True
+  FORMAT: "RGB"
+
+TEST:
+  # 设置为 0 来禁用周期性评估
+  EVAL_PERIOD: 0
