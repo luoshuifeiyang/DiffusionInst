@@ -32,9 +32,8 @@ from detectron2.modeling import build_model
 from diffusioninst import DiffusionInstDatasetMapper, add_diffusioninst_config, DiffusionInstWithTTA
 from diffusioninst.util.model_ema import add_model_ema_configs, may_build_model_ema, may_get_ema_checkpointer, EMAHook, \
     apply_model_ema_and_restore, EMADetectionCheckpointer
-
-
-class Trainer(DefaultTrainer): #11111111111 todo
+print("11111")
+class Trainer(DefaultTrainer): #1111111111
     """ Extension of the Trainer class adapted to DiffusionInst. """
 
     def __init__(self, cfg):
